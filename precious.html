@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precious Ezeigbo - Software Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: white;
+            --text-color: black;
+            --accent-color: black;
+            --link-color: grey;
+            --link-hover-color: #242120;
+            --secondary-text: rgb(44, 41, 41);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Courier New", monospace;
+            background-color: var(--bg-color);
+            color: black;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--link-hover-color);
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            border: 4px solid var(--accent-color);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--secondary-text);
+        }
+
+        .social-links {
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 0.5rem;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: 5px;
+            line-height: 40px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            transform: translateY(-3px);
+        }
+
+        .bio {
+            margin: 2rem 0;
+            font-size: 1.1rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin: 2.5rem 0 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .projects {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .project {
+            padding: 1.5rem;
+            background-color: rgba(0, 0, 0, 0.03);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            font-weight: bold;
+        }
+
+        .project-description {
+            color: var(--secondary-text);
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem 0;
+            color: var(--secondary-text);
+            font-size: 0.9rem;
+        }
+
+        .emoji {
+            font-size: 1.2rem;
+            margin-right: 0.3rem;
+        }
+
+        /* CV download button */
+        .cv-section {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cv-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 24px;
+            background-color: black;
+            color: white;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid black;
+        }
+
+        .cv-button:hover {
+            background-color: white;
+            color: black;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .cv-button i {
+            margin-right: 10px;
+        }
+
+        /* Add responsive design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Precious Ezeigbo</h1>
+            <div class="title">[Software Engineer (Backend-Focused)]</div>
+            <div class="social-links">
+                <a href="mailto:preciousezeigbo81@gmail.com"><i class="fa fa-envelope"></i></a>
+                <a href="https://github.com/PreciousEzeigbo" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/PreciousEzeigbo" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+            <!-- New CV Download Section -->
+        <section class="cv-section">
+            <a href="./Precious_Ezeigbo_CV.pdf" download class="cv-button">
+                <i class="fas fa-file-download"></i> Download CV
+            </a>
+        </section>
+
+        </header>
+
+        <section class="bio">
+            <p>I'm a versatile software engineer proficient in backend and growing fullstack capabilities. My technical foundation includes Python, Flask, FastAPI, and database technologies (PostgreSQL, MySQL), complemented by frontend skills with Next.js for complete application development.</p>
+            <br>
+            <p>When I'm not debugging code, I'm probably debugging my life. So far, the code has been easier to fix.</p>
+            <br>
+        </section>
+
+        
+        <h2>Projects</h2>
+        <section class="projects">
+            <div class="project">
+                <div class="project-title"><span class="emoji">🏠</span> Eyrie</div>
+                <div class="project-description">A comprehensive real estate platform built with Next.js, featuring property listings, user authentication, and responsive design across all device types. Think Zillow, but with fewer bugs and more charm.</div>
+                <a href="https://github.com/PreciousEzeigbo/Eyrie" target="_blank">See on GitHub →</a>
+            </div>
+
+            <div class="project">
+                <div class="project-title"><span class="emoji">👶</span> Thinky-Tots</div>
+                <div class="project-description">An educational web app for children using Python and Flask, featuring interactive quizzes and progress tracking. Because kids should learn before they can properly tie their shoes.</div>
+                <a href="https://github.com/PreciousEzeigbo/Thinky-Tots" target="_blank">See on GitHub →</a>
+            </div>
+
+            <div class="project">
+                <div class="project-title"><span class="emoji">💪</span> FitConnect</div>
+                <div class="project-description">A fitness tracking app that helps you record workouts, view history, and connect with other fitness enthusiasts. For when you want to share your pain with others who understand.</div>
+                <a href="https://github.com/PreciousEzeigbo/Portfolio_project" target="_blank">See on GitHub →</a>
+            </div>
+        
+            <div class="project">
+                <div class="project-title"><span class="emoji">🤖</span> GitHub-Telegram Integration Bot</div>
+                <div class="project-description">
+                    Developed and deployed a FastAPI-based application that connects GitHub repositories with Telegram for real-time event notifications. Features include secure webhook handling with HMAC signature verification, PostgreSQL session storage, and a conversational Telegram bot interface for managing multiple repositories.
+                </div>
+                <a href="https://github.com/PreciousEzeigbo/Github-Telegram-Notifier" target="_blank">See on GitHub →</a>
+            </div>
+        </section>
+
+        <footer>
+            <p>Powered by caffeine, curiosity, and occasional imposter syndrome</p>
+            <p>© 2025 Precious Ezeigbo • Nigeria</p>
+        </footer>
+    </div>
+</body>
+</html>
