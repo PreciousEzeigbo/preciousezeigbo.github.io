@@ -108,7 +108,7 @@
 
 /* Subtle glow for primary elements */
 .glow-primary {
-  text-shadow: 0 0 20px hsl(45 80% 60% / 0.15);
+  text-shadow: 0 0 20px hsl(var(--primary) / 0.15);
 }
 
 /* Selection color */
