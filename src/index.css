@@ -39,9 +39,34 @@
     --font-sans: 'Space Grotesk', system-ui, sans-serif;
   }
 
+  /* Light mode base */
+  [data-mode="light"] {
+    --background: 40 20% 96%;
+    --foreground: 220 14% 12%;
+    --card: 40 15% 92%;
+    --card-foreground: 220 14% 12%;
+    --popover: 40 15% 92%;
+    --popover-foreground: 220 14% 12%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 10% 88%;
+    --secondary-foreground: 220 10% 35%;
+    --muted: 220 10% 90%;
+    --muted-foreground: 220 8% 50%;
+    --accent: 220 10% 85%;
+    --accent-foreground: 220 14% 12%;
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 10% 85%;
+    --input: 220 10% 85%;
+    --sidebar-background: 40 15% 94%;
+    --sidebar-foreground: 220 14% 12%;
+    --sidebar-accent: 220 10% 88%;
+    --sidebar-accent-foreground: 220 14% 12%;
+    --sidebar-border: 220 10% 85%;
+  }
+
   [data-theme="cyan"] {
     --primary: 185 70% 55%;
-    --primary-foreground: 220 14% 6%;
     --ring: 185 70% 55%;
     --sidebar-primary: 185 70% 55%;
     --sidebar-ring: 185 70% 55%;
@@ -49,7 +74,6 @@
 
   [data-theme="rose"] {
     --primary: 350 70% 60%;
-    --primary-foreground: 220 14% 6%;
     --ring: 350 70% 60%;
     --sidebar-primary: 350 70% 60%;
     --sidebar-ring: 350 70% 60%;
@@ -57,7 +81,6 @@
 
   [data-theme="green"] {
     --primary: 145 60% 50%;
-    --primary-foreground: 220 14% 6%;
     --ring: 145 60% 50%;
     --sidebar-primary: 145 60% 50%;
     --sidebar-ring: 145 60% 50%;
@@ -65,7 +88,6 @@
 
   [data-theme="violet"] {
     --primary: 270 60% 65%;
-    --primary-foreground: 220 14% 6%;
     --ring: 270 60% 65%;
     --sidebar-primary: 270 60% 65%;
     --sidebar-ring: 270 60% 65%;
@@ -122,12 +144,12 @@
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: hsl(220 14% 6%);
+  background: hsl(var(--background));
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(220 10% 20%);
+  background: hsl(var(--muted-foreground) / 0.3);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(220 10% 28%);
+  background: hsl(var(--muted-foreground) / 0.5);
 }
