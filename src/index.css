@@ -113,7 +113,7 @@
 
 /* Selection color */
 ::selection {
-  background: hsl(45 80% 60% / 0.25);
+  background: hsl(var(--primary) / 0.25);
   color: hsl(40 6% 95%);
 }
 
