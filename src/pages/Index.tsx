@@ -1,8 +1,8 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ProjectsSection from "@/components/ProjectsSection";
-import ExperienceSection from "@/components/ExperienceSection";
 import ContactSection from "@/components/ContactSection";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const Index = () => {
   return (
@@ -10,8 +10,8 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       <ProjectsSection />
-      <ExperienceSection />
       <ContactSection />
+      <ThemeToggle />
     </div>
   );
 };

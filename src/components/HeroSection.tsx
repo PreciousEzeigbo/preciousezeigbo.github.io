@@ -63,10 +63,10 @@ const HeroSection = () => {
                 View Projects →
               </a>
               <a
-                href="#experience"
+                href="#contact"
                 className="font-mono text-sm px-6 py-3 border border-border text-muted-foreground hover:border-foreground hover:text-foreground transition-all duration-300"
               >
-                About Me
+                Contact Me
               </a>
             </motion.div>
           )}
