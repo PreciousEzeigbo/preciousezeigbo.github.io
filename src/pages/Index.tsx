@@ -11,6 +11,7 @@ const Index = () => {
       <HeroSection />
       <ProjectsSection />
       <ContactSection />
+      <ThemeToggle />
     </div>
   );
 };
