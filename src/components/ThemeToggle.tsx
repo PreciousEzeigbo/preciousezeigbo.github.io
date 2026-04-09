@@ -13,7 +13,7 @@ const themes = [
 const ThemeToggle = () => {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(() => localStorage.getItem("color-theme") || "amber");
-  const [mode, setMode] = useState<"dark" | "light">(() => (localStorage.getItem("bg-mode") as "dark" | "light") || "dark");
+  const [mode, setMode] = useState<"dark" | "light">(() => (localStorage.getItem("bg-mode") as "dark" | "light") || "light");
   const [isTransitioning, setIsTransitioning] = useState(false);
   const modeButtonRef = useRef<HTMLButtonElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);

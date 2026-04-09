@@ -7,18 +7,21 @@ const HeroSection = () => {
   const [showButtons, setShowButtons] = useState(false);
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-6 pt-20">
-      <div className="max-w-3xl w-full">
+    <section id="home" className="min-h-screen flex items-start justify-center px-4 pt-24 pb-16">
+      <div className="w-full max-w-3xl notebook-lines notebook-margin notebook-holes paper-texture bg-card rounded-sm border border-border px-6 pl-20 py-0">
+        {/* Top header area */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4 }}
+          className="pt-8"
         >
-          <p className="font-mono text-xs tracking-[0.3em] text-muted-foreground mb-6">
-            {">"} hello, world
-          </p>
+          {/* Name field - like a form header */}
+          <div className="on-line flex items-baseline gap-2 text-muted-foreground font-mono text-xs tracking-wider">
+            <span className="text-primary">NAME:</span>
+          </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-sans font-bold leading-tight mb-6">
+          <h1 className="on-line-lg font-handwriting text-5xl md:text-6xl font-bold text-foreground">
             <TypewriterText
               text="Akinkunmi"
               speed={80}
@@ -28,24 +31,41 @@ const HeroSection = () => {
             />
           </h1>
 
+          {/* Subject line */}
           {showSubtext && (
-            <div className="space-y-4 mb-10">
-              <p className="font-mono text-sm md:text-base tracking-wide text-primary glow-primary">
+            <div>
+              <div className="on-line flex items-baseline gap-2 text-muted-foreground font-mono text-xs tracking-wider mt-0">
+                <span className="text-primary">SUBJECT:</span>
+              </div>
+              <p className="on-line font-mono text-sm tracking-[0.2em] text-primary glow-primary">
                 <TypewriterText
-                  text="SOFTWARE ENGINEER"
+                  text="SOFTWARE ENGINEERING"
                   speed={40}
                   delay={200}
                   onComplete={() => setShowButtons(true)}
                 />
               </p>
-              <motion.p
+
+              <div className="on-line" /> {/* blank line */}
+
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 1.5, duration: 0.8 }}
-                className="text-muted-foreground font-sans text-lg md:text-xl max-w-xl leading-relaxed"
+                transition={{ delay: 1.2, duration: 0.8 }}
               >
-                Building clean, performant software with a focus on developer experience and elegant solutions.
-              </motion.p>
+                <div className="on-line flex items-baseline gap-2 text-muted-foreground font-mono text-xs tracking-wider">
+                  <span className="text-primary">NOTES:</span>
+                </div>
+                <p className="on-line font-handwriting text-xl md:text-2xl text-foreground/80 leading-[var(--line-height)]">
+                  Building clean, performant software
+                </p>
+                <p className="on-line font-handwriting text-xl md:text-2xl text-foreground/80 leading-[var(--line-height)]">
+                  with a focus on developer experience
+                </p>
+                <p className="on-line font-handwriting text-xl md:text-2xl text-foreground/80 leading-[var(--line-height)]">
+                  and elegant solutions.
+                </p>
+              </motion.div>
             </div>
           )}
 
@@ -54,33 +74,26 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.5 }}
-              className="flex flex-wrap gap-4"
             >
-              <a
-                href="#projects"
-                className="font-mono text-sm px-6 py-3 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-              >
-                View Projects →
-              </a>
-              <a
-                href="#contact"
-                className="font-mono text-sm px-6 py-3 border border-border text-muted-foreground hover:border-foreground hover:text-foreground transition-all duration-300"
-              >
-                Contact Me
-              </a>
+              <div className="on-line" /> {/* blank line */}
+              <div className="on-line flex flex-wrap gap-4 items-center">
+                <a
+                  href="#projects"
+                  className="font-mono text-xs px-4 py-1.5 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 rounded-sm"
+                >
+                  View Projects →
+                </a>
+                <a
+                  href="#contact"
+                  className="font-mono text-xs px-4 py-1.5 border border-border text-muted-foreground hover:border-foreground hover:text-foreground transition-all duration-300 rounded-sm"
+                >
+                  Contact Me
+                </a>
+              </div>
+              <div className="on-line" />
+              <div className="on-line" />
             </motion.div>
           )}
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.15 }}
-          transition={{ delay: 2, duration: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
-        >
-          <div className="font-mono text-xs tracking-widest text-muted-foreground animate-bounce">
-            ↓ scroll
-          </div>
         </motion.div>
       </div>
     </section>

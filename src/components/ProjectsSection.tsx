@@ -30,57 +30,65 @@ const projects = [
 
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="py-32 px-6">
-      <div className="container mx-auto max-w-3xl">
+    <section id="projects" className="py-12 px-4">
+      <div className="max-w-3xl mx-auto notebook-lines notebook-margin notebook-holes paper-texture bg-card rounded-sm border border-border px-6 pl-20 py-0">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
+          className="pt-8"
         >
-          <h2 className="font-sans text-3xl md:text-4xl font-bold mb-2 text-foreground">
+          <div className="on-line font-mono text-xs tracking-wider text-primary">
+            SECTION: PROJECTS
+          </div>
+          <h2 className="on-line-lg font-handwriting text-4xl md:text-5xl font-bold text-foreground">
             Projects
           </h2>
-          <div className="w-16 h-px bg-primary mb-16" />
+          <div className="on-line" /> {/* blank line */}
         </motion.div>
 
-        <div className="space-y-0">
+        <div>
           {projects.map((project, i) => (
-            <motion.div
+            <motion.a
               key={project.title}
-              initial={{ opacity: 0, x: -20 }}
+              href={project.url === "#" ? "#" : `https://${project.url}`}
+              target={project.url === "#" ? undefined : "_blank"}
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, x: -10 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group border-b border-border py-8 first:pt-0"
+              transition={{ duration: 0.4, delay: i * 0.08 }}
+              className="group block"
             >
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex-1">
-                  <h3 className="font-sans text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300 mb-1">
-                    {project.title}
-                  </h3>
-                  <p className="font-mono text-xs tracking-[0.15em] text-muted-foreground uppercase mb-3">
-                    {project.url}
-                  </p>
-                  <p className="text-muted-foreground font-sans leading-relaxed mb-4">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((t) => (
-                      <span
-                        key={t}
-                        className="font-mono text-[10px] tracking-wider px-2 py-1 bg-secondary text-secondary-foreground"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors duration-300 mt-1 flex-shrink-0" />
+              <div className="on-line flex items-baseline justify-between gap-2">
+                <span className="font-handwriting text-2xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
+                  {i + 1}. {project.title}
+                </span>
+                <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors duration-300 flex-shrink-0" />
               </div>
-            </motion.div>
+              <div className="on-line font-mono text-[10px] tracking-[0.2em] text-muted-foreground uppercase">
+                {project.url}
+              </div>
+              <div className="on-line font-handwriting text-lg text-foreground/70">
+                {project.description}
+              </div>
+              <div className="on-line flex flex-wrap gap-2 items-center">
+                {project.tech.map((t) => (
+                  <span
+                    key={t}
+                    className="font-mono text-[10px] tracking-wider px-2 py-0.5 border border-border text-muted-foreground rounded-sm"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+              <div className="on-line" /> {/* blank line separator */}
+            </motion.a>
           ))}
         </div>
+
+        <div className="on-line" />
       </div>
     </section>
   );

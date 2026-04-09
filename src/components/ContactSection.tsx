@@ -9,24 +9,33 @@ const links = [
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-32 px-6">
-      <div className="container mx-auto max-w-3xl">
+    <section id="contact" className="py-12 px-4 pb-24">
+      <div className="max-w-3xl mx-auto notebook-lines notebook-margin notebook-holes paper-texture bg-card rounded-sm border border-border px-6 pl-20 py-0">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
+          className="pt-8"
         >
-          <h2 className="font-sans text-3xl md:text-4xl font-bold mb-2 text-foreground">
+          <div className="on-line font-mono text-xs tracking-wider text-primary">
+            SECTION: CONTACT
+          </div>
+          <h2 className="on-line-lg font-handwriting text-4xl md:text-5xl font-bold text-foreground">
             Get in Touch
           </h2>
-          <div className="w-16 h-px bg-primary mb-10" />
+          <div className="on-line" />
 
-          <p className="text-muted-foreground font-sans text-lg leading-relaxed mb-10 max-w-lg">
-            Interested in working together or just want to say hello? Feel free to reach out.
+          <p className="on-line font-handwriting text-xl text-foreground/70">
+            Interested in working together or
+          </p>
+          <p className="on-line font-handwriting text-xl text-foreground/70">
+            just want to say hello? Feel free to reach out.
           </p>
 
-          <div className="flex items-center gap-6">
+          <div className="on-line" />
+
+          <div className="on-line flex items-center gap-6">
             {links.map((link, i) => (
               <motion.a
                 key={link.label}
@@ -37,7 +46,7 @@ const ContactSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group flex items-center gap-2 font-mono text-sm text-muted-foreground hover:text-primary transition-colors duration-300"
+                className="group flex items-center gap-2 font-mono text-xs text-muted-foreground hover:text-primary transition-colors duration-300"
               >
                 <link.icon className="w-4 h-4" />
                 <span className="border-b border-transparent group-hover:border-primary transition-colors duration-300">
@@ -46,6 +55,9 @@ const ContactSection = () => {
               </motion.a>
             ))}
           </div>
+
+          <div className="on-line" />
+          <div className="on-line" />
         </motion.div>
 
         {/* Footer */}
@@ -54,11 +66,12 @@ const ContactSection = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-32 pt-8 border-t border-border"
         >
-          <p className="font-mono text-xs text-muted-foreground tracking-wider">
+          <div className="on-line border-t border-border" />
+          <p className="on-line font-mono text-[10px] text-muted-foreground tracking-wider">
             © 2026 — Built with care
           </p>
+          <div className="on-line" />
         </motion.div>
       </div>
     </section>
