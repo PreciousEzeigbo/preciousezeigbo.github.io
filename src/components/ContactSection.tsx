@@ -1,10 +1,16 @@
 import { motion } from "framer-motion";
-import { Github, Mail, Twitter } from "lucide-react";
+import { Github, Mail } from "lucide-react";
+
+const XIcon = (props: any) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153zM17.61 20.644h2.039L6.486 3.24H4.298l13.312 17.403z" />
+  </svg>
+);
 
 const links = [
-  { icon: Github, label: "GitHub", href: "https://github.com" },
-  { icon: Mail, label: "Email", href: "mailto:hello@akinkunmi.dev" },
-  { icon: Twitter, label: "Twitter", href: "https://twitter.com" },
+  { icon: Github, label: "GitHub", href: "https://github.com/PreciousEzeigbo" },
+  { icon: Mail, label: "Email", href: "mailto:preciousezeigbo81@gmail.com" },
+  { icon: XIcon, label: "X", href: "https://x.com/preciousezeigbo" },
 ];
 
 const ContactSection = () => {

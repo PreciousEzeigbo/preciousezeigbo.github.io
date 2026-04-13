@@ -23,7 +23,7 @@ const HeroSection = () => {
 
           <h1 className="on-line-lg font-handwriting text-5xl md:text-6xl font-bold text-foreground">
             <TypewriterText
-              text="Akinkunmi"
+              text="Precious Ezeigbo"
               speed={80}
               delay={300}
               className="text-foreground"
@@ -57,13 +57,13 @@ const HeroSection = () => {
                   <span className="text-primary">NOTES:</span>
                 </div>
                 <p className="on-line font-handwriting text-xl md:text-2xl text-foreground/80 leading-[var(--line-height)]">
-                  Building clean, performant software
+                  Building stuffs that might be useful to me and maybe you
                 </p>
                 <p className="on-line font-handwriting text-xl md:text-2xl text-foreground/80 leading-[var(--line-height)]">
-                  with a focus on developer experience
+                  with a focus on developer/user experience
                 </p>
                 <p className="on-line font-handwriting text-xl md:text-2xl text-foreground/80 leading-[var(--line-height)]">
-                  and elegant solutions.
+                  ...will insert a smiley face later lol.
                 </p>
               </motion.div>
             </div>
@@ -88,6 +88,23 @@ const HeroSection = () => {
                   className="font-mono text-xs px-4 py-1.5 border border-border text-muted-foreground hover:border-foreground hover:text-foreground transition-all duration-300 rounded-sm"
                 >
                   Contact Me
+                </a>
+              </div>
+
+              <div className="on-line flex items-baseline gap-2 text-muted-foreground font-mono text-xs tracking-wider mt-4">
+                <span className="text-primary">ATTACHMENT:</span>
+              </div>
+              <div className="on-line flex gap-4">
+                <a
+                  href="https://drive.google.com/file/d/1GzvI0gZosGyHLJOJNE9s4Cjhs6-M8kra/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-2 font-handwriting text-xl text-primary hover:text-primary/80 transition-colors"
+                >
+                  <span className="border-b border-primary/30 group-hover:border-primary transition-colors">
+                    CV
+                  </span>
+                  <span className="font-mono text-[10px] text-muted-foreground">(VIEW)</span>
                 </a>
               </div>
               <div className="on-line" />

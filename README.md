@@ -1,3 +1,3 @@
-# Welcome to your Lovable project
+# Typewriter Tales
 
-TODO: Document your project here
+A personal portfolio theme with a notebook aesthetic.

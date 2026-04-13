@@ -3,26 +3,14 @@ import { ExternalLink } from "lucide-react";
 
 const projects = [
   {
-    title: "Better Secrets",
-    url: "better-secrets.xyz",
-    description: "A better way to manage GitHub Actions secrets.",
-    tech: ["React", "TypeScript", "GitHub API"],
-  },
-  {
-    title: "FireFlow",
-    url: "fireflow.run",
-    description: "Create automated workflows using natural language.",
-    tech: ["Next.js", "AI", "Workflow Engine"],
-  },
-  {
-    title: "OutRay",
-    url: "outray.io",
-    description: "Developer tooling for monitoring and observability.",
-    tech: ["React", "Node.js", "Real-time"],
+    title: "ExtConvert",
+    url: "ext-convert.vercel.app",
+    description: "Convert file extensions with ease.",
+    tech: ["React", "Python", "FastAPI"],
   },
   {
     title: "Document Q&A",
-    url: "#",
+    url: "rag-brown-rho.vercel.app",
     description: "AI-powered document question and answer system with RAG.",
     tech: ["Python", "LangChain", "Vector DB"],
   },
