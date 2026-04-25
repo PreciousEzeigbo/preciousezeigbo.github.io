@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 
 interface UseTypewriterOptions {
   text: string;
@@ -11,8 +11,15 @@ export function useTypewriter({ text, speed = 50, delay = 0, onComplete }: UseTy
   const [displayText, setDisplayText] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
+  const onCompleteRef = useRef(onComplete);
+
+  // Sync ref with the latest onComplete callback
+  useEffect(() => {
+    onCompleteRef.current = onComplete;
+  }, [onComplete]);
 
   const startTyping = useCallback(() => {
+    // Prevent re-triggering if already typing or completed for the same text
     setIsTyping(true);
     setDisplayText("");
     setIsComplete(false);
@@ -27,13 +34,13 @@ export function useTypewriter({ text, speed = 50, delay = 0, onComplete }: UseTy
           clearInterval(interval);
           setIsTyping(false);
           setIsComplete(true);
-          onComplete?.();
+          onCompleteRef.current?.();
         }
       }, speed);
     }, delay);
 
     return () => clearTimeout(timer);
-  }, [text, speed, delay, onComplete]);
+  }, [text, speed, delay]); // Removed onComplete from dependencies
 
   useEffect(() => {
     const cleanup = startTyping();

@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import TypewriterText from "./TypewriterText";
 
 const HeroSection = () => {
   const [showSubtext, setShowSubtext] = useState(false);
   const [showButtons, setShowButtons] = useState(false);
+
+  const handleNameComplete = useCallback(() => setShowSubtext(true), []);
+  const handleSubjectComplete = useCallback(() => setShowButtons(true), []);
 
   return (
     <section id="home" className="min-h-screen flex items-start justify-center px-4 pt-24 pb-16">
@@ -13,26 +16,26 @@ const HeroSection = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.4 }}
-          className="pt-8"
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="pt-8 will-change-[opacity]"
         >
           {/* Name field - like a form header */}
           <div className="on-line flex items-baseline gap-2 text-muted-foreground font-mono text-xs tracking-wider">
             <span className="text-primary">NAME:</span>
           </div>
 
-          <h1 className="on-line-lg font-handwriting text-5xl md:text-6xl font-bold text-foreground">
+          <h1 className="on-line-lg font-handwriting text-5xl md:text-6xl font-bold text-foreground min-h-[9rem] flex items-center">
             <TypewriterText
               text="Precious Ezeigbo"
               speed={80}
               delay={300}
               className="text-foreground"
-              onComplete={() => setShowSubtext(true)}
+              onComplete={handleNameComplete}
             />
           </h1>
 
           {/* Subject line */}
-          {showSubtext && (
+          <div className={`transition-opacity duration-500 ${showSubtext ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
             <div>
               <div className="on-line flex items-baseline gap-2 text-muted-foreground font-mono text-xs tracking-wider mt-0">
                 <span className="text-primary">SUBJECT:</span>
@@ -42,16 +45,17 @@ const HeroSection = () => {
                   text="SOFTWARE ENGINEERING"
                   speed={40}
                   delay={200}
-                  onComplete={() => setShowButtons(true)}
+                  onComplete={handleSubjectComplete}
                 />
               </p>
 
               <div className="on-line" /> {/* blank line */}
 
               <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.2, duration: 0.8 }}
+                initial={false}
+                animate={{ opacity: showSubtext ? 1 : 0 }}
+                transition={{ delay: 0.2, duration: 0.8 }}
+                className="will-change-[opacity]"
               >
                 <div className="on-line flex items-baseline gap-2 text-muted-foreground font-mono text-xs tracking-wider">
                   <span className="text-primary">NOTES:</span>
@@ -67,50 +71,44 @@ const HeroSection = () => {
                 </p>
               </motion.div>
             </div>
-          )}
+          </div>
 
-          {showButtons && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-            >
-              <div className="on-line" /> {/* blank line */}
-              <div className="on-line flex flex-wrap gap-4 items-center">
-                <a
-                  href="#projects"
-                  className="font-mono text-xs px-4 py-1.5 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 rounded-sm"
-                >
-                  View Projects →
-                </a>
-                <a
-                  href="#contact"
-                  className="font-mono text-xs px-4 py-1.5 border border-border text-muted-foreground hover:border-foreground hover:text-foreground transition-all duration-300 rounded-sm"
-                >
-                  Contact Me
-                </a>
-              </div>
+          <div className={`transition-all duration-500 ${showButtons ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}`}>
+            <div className="on-line" /> {/* blank line */}
+            <div className="on-line flex flex-wrap gap-4 items-center">
+              <a
+                href="#projects"
+                className="font-mono text-xs px-4 py-1.5 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 rounded-sm"
+              >
+                View Projects →
+              </a>
+              <a
+                href="#contact"
+                className="font-mono text-xs px-4 py-1.5 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 rounded-sm"
+              >
+                Contact Me
+              </a>
+            </div>
 
-              <div className="on-line flex items-baseline gap-2 text-muted-foreground font-mono text-xs tracking-wider mt-4">
-                <span className="text-primary">ATTACHMENT:</span>
-              </div>
-              <div className="on-line flex gap-4">
-                <a
-                  href="https://drive.google.com/file/d/1GzvI0gZosGyHLJOJNE9s4Cjhs6-M8kra/view?usp=sharing"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-2 font-handwriting text-xl text-primary hover:text-primary/80 transition-colors"
-                >
-                  <span className="border-b border-primary/30 group-hover:border-primary transition-colors">
-                    CV
-                  </span>
-                  <span className="font-mono text-[10px] text-muted-foreground">(VIEW)</span>
-                </a>
-              </div>
-              <div className="on-line" />
-              <div className="on-line" />
-            </motion.div>
-          )}
+            <div className="on-line flex items-baseline gap-2 text-muted-foreground font-mono text-xs tracking-wider mt-4">
+              <span className="text-primary">ATTACHMENT:</span>
+            </div>
+            <div className="on-line flex gap-4">
+              <a
+                href="https://drive.google.com/file/d/1GzvI0gZosGyHLJOJNE9s4Cjhs6-M8kra/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 font-handwriting text-xl text-primary hover:text-primary/80 transition-colors"
+              >
+                <span className="border-b border-primary/30 group-hover:border-primary transition-colors">
+                  CV
+                </span>
+                <span className="font-mono text-[10px] text-muted-foreground">(VIEW)</span>
+              </a>
+            </div>
+            <div className="on-line" />
+            <div className="on-line" />
+          </div>
         </motion.div>
       </div>
     </section>

@@ -17,12 +17,15 @@ const TypewriterText = ({
   as: Tag = "span",
   onComplete,
 }: TypewriterTextProps) => {
-  const { displayText, isTyping } = useTypewriter({ text, speed, delay, onComplete });
+  const { displayText, isTyping, isComplete } = useTypewriter({ text, speed, delay, onComplete });
 
   return (
-    <Tag className={className}>
+    <Tag className={`${className} inline-flex items-baseline`}>
       {displayText}
-      <span className={`cursor-blink inline-block w-[2px] h-[1em] bg-primary ml-0.5 align-middle ${!isTyping ? "opacity-0" : ""}`} />
+      <span
+        className={`inline-block w-[2px] h-[1em] bg-primary ml-1 align-middle ${isTyping || isComplete ? "opacity-100 cursor-blink" : "opacity-0"
+          }`}
+      />
     </Tag>
   );
 };

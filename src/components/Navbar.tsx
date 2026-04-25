@@ -9,10 +9,10 @@ const navItems = [
 const Navbar = () => {
   return (
     <motion.nav
-      initial={{ opacity: 0, y: -20 }}
+      initial={{ opacity: 0.01, y: -4 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-b border-border"
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-b border-border will-change-transform"
     >
       <div className="max-w-3xl mx-auto px-6 py-3 flex items-center justify-between">
         <a href="#home" className="font-handwriting text-2xl font-bold text-primary">
