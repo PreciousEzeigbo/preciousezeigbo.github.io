@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Preconnect to font domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Preload fonts to avoid layout shift -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap">
+
+  <title>Precious Ezeigbo — Software Engineer</title>
+  <meta name="description" content="Software engineer building stuffs" />
+  <meta name="author" content="Precious Ezeigbo" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <style>
+    /* Critical CSS to prevent white flash and FOUC */
+    :root {
+      --background: 40 30% 95%;
+      --foreground: 220 20% 15%;
+      --line-color: 210 20% 82%;
+      --margin-color: 0 60% 70%;
+      --line-height: 2.25rem;
+      --paper-shadow: 220 10% 70%;
+    }
+
+    [data-mode="dark"] {
+      --background: 220 14% 8%;
+      --foreground: 40 10% 80%;
+      --line-color: 220 10% 18%;
+      --margin-color: 0 40% 35%;
+      --paper-shadow: 220 10% 5%;
+    }
+
+    html,
+    body {
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+      margin: 0;
+      padding: 0;
+    }
+
+    .notebook-lines {
+      background-image: repeating-linear-gradient(to bottom, transparent, transparent calc(var(--line-height) - 1px), hsl(var(--line-color)) calc(var(--line-height) - 1px), hsl(var(--line-color)) var(--line-height));
+      background-size: 100% var(--line-height);
+    }
+
+    .paper-texture {
+      box-shadow: 2px 2px 8px hsl(var(--paper-shadow) / 0.2), inset 0 0 80px hsl(var(--paper-shadow) / 0.03);
+    }
+
+    .notebook-margin {
+      position: relative;
+    }
+
+    .notebook-margin::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 4rem;
+      width: 2px;
+      background: hsl(var(--margin-color) / 0.5);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .notebook-holes {
+      position: relative;
+    }
+
+    .notebook-holes::after {
+      content: "";
+      position: absolute;
+      top: 3rem;
+      left: 1.25rem;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background: hsl(var(--background));
+      box-shadow: 0 8rem 0 hsl(var(--background)), 0 16rem 0 hsl(var(--background)), 0 24rem 0 hsl(var(--background)), 0 32rem 0 hsl(var(--background));
+      border: 1px solid hsl(var(--line-color));
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .on-line-lg {
+      line-height: calc(var(--line-height) * 2);
+    }
+  </style>
+
+  <script>
+    /* Prevent theme flash */
+    (function () {
+      try {
+        const mode = localStorage.getItem('bg-mode') || 'light';
+        const theme = localStorage.getItem('color-theme') || 'amber';
+
+        if (mode === 'dark' || (mode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-mode', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-mode', 'light');
+        }
+
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) { }
+    })();
+  </script>
+
+  <meta property="og:title" content="Precious Ezeigbo — Software Engineer" />
+  <meta property="og:description" content="Software engineer building stuffs" />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="module" crossorigin src="/assets/index-CWs0mE-z.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-B7In00XI.css">
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+
+</html>
