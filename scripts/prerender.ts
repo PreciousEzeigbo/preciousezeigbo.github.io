@@ -79,60 +79,68 @@ console.log(`✓ Static server started at http://localhost:${PORT}`);
 
 // ─── 2. Launch headless Chromium, render the page ───────────────────────────
 
-const browser = await chromium.launch();
-const page = await browser.newPage();
+try {
+  const browser = await chromium.launch();
+  const page = await browser.newPage();
 
-// Suppress console noise from the prerender page
-page.on("console", () => {});
-page.on("pageerror", (err) => {
-  console.error("Page error:", err.message);
-});
+  // Suppress console noise from the prerender page
+  page.on("console", () => {});
+  page.on("pageerror", (err) => {
+    console.error("Page error:", err.message);
+  });
 
-console.log("⏳ Navigating to page and waiting for React to render…");
+  console.log("⏳ Navigating to page and waiting for React to render…");
 
-await page.goto(`http://localhost:${PORT}/`, {
-  waitUntil: "networkidle",
-  timeout: 30_000,
-});
+  await page.goto(`http://localhost:${PORT}/`, {
+    waitUntil: "networkidle",
+    timeout: 30_000,
+  });
 
-// Wait until #root has actual children (React has mounted)
-await page.waitForFunction(
-  () => {
-    const root = document.getElementById("root");
-    return root !== null && root.children.length > 0;
-  },
-  { timeout: 15_000 }
-);
+  // Wait until #root has actual children (React has mounted)
+  await page.waitForFunction(
+    () => {
+      const root = document.getElementById("root");
+      return root !== null && root.children.length > 0;
+    },
+    { timeout: 15_000 }
+  );
 
-// Extra small wait for any deferred renders / animations to settle
-await page.waitForTimeout(500);
+  // Extra small wait for any deferred renders / animations to settle
+  await page.waitForTimeout(500);
 
-// ─── 3. Extract and clean up the rendered HTML ───────────────────────────────
+  // ─── 3. Extract and clean up the rendered HTML ───────────────────────────────
 
-const renderedHTML = await page.content();
+  const renderedHTML = await page.content();
 
-// We want to preserve the original <head> (with its inline critical CSS and
-// theme-flash-prevention script) but replace <body> content with what React
-// actually rendered. The simplest safe approach: just use the full page HTML.
-// Playwright's page.content() returns the live serialised DOM which already
-// contains everything.
+  // We want to preserve the original <head> (with its inline critical CSS and
+  // theme-flash-prevention script) but replace <body> content with what React
+  // actually rendered. The simplest safe approach: just use the full page HTML.
+  // Playwright's page.content() returns the live serialised DOM which already
+  // contains everything.
 
-writeFileSync(INDEX_PATH, renderedHTML, "utf-8");
+  writeFileSync(INDEX_PATH, renderedHTML, "utf-8");
 
-console.log(`✓ dist/index.html overwritten with prerendered content`);
+  console.log(`✓ dist/index.html overwritten with prerendered content`);
 
-// Quick sanity check — confirm there's real content in the output
-const written = readFileSync(INDEX_PATH, "utf-8");
-const hasContent = written.includes("Precious") || written.includes("portfolio") || written.length > 5000;
-if (hasContent) {
-  console.log("✓ Sanity check passed — prerendered HTML contains real content");
-} else {
-  console.warn("⚠ Sanity check: prerendered HTML may be incomplete — check dist/index.html");
+  // Quick sanity check — confirm there's real content in the output
+  const written = readFileSync(INDEX_PATH, "utf-8");
+  const hasContent = written.includes("Precious") || written.includes("portfolio") || written.length > 5000;
+  if (hasContent) {
+    console.log("✓ Sanity check passed — prerendered HTML contains real content");
+  } else {
+    console.warn("⚠ Sanity check: prerendered HTML may be incomplete — check dist/index.html");
+  }
+
+  // ─── 4. Cleanup ─────────────────────────────────────────────────────────────
+
+  await browser.close();
+  server.stop();
+
+  console.log("✅ Prerender complete");
+} catch (error) {
+  console.warn("⚠ Playwright prerender failed (e.g. browser not installed/network issue).");
+  console.warn(error instanceof Error ? error.message : error);
+  console.warn("Skipping prerender step and keeping standard client-side index.html.");
+  server.stop();
+  process.exit(0);
 }
-
-// ─── 4. Cleanup ─────────────────────────────────────────────────────────────
-
-await browser.close();
-server.stop();
-
-console.log("✅ Prerender complete");
