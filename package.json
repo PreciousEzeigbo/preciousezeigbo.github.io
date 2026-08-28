@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && bun run prerender",
+    "build": "vite build && run prerender",
     "build:vite": "vite build",
     "build:dev": "vite build --mode development",
     "prerender": "bun run scripts/prerender.ts",
