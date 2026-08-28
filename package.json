@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build && bun run prerender",
+    "dev": "node api.js && vite",
+    "build": "node api.js && vite build && run prerender",
     "build:vite": "vite build",
     "build:dev": "vite build --mode development",
     "prerender": "bun run scripts/prerender.ts",
